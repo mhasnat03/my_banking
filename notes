@@ -1,0 +1,11 @@
+command line up 
+1. prompt user to sign up or log in 
+2. user should be able to sign in with first name, last name, pin and account # and intial deposit
+3. user should be able to log in with existing account # and pin
+4. user should be able to deposit, withdraw, transfer funds
+5. deposit should increase balance 
+
+
+
+NOTES FROM PROJECT
+AccountsHolder.new(self) - self refers to the instance of the class. this is way to refer to the instance inside of the class. 

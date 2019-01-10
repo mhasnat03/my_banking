@@ -19,8 +19,6 @@ class Prompt
 		end
 	end
 
-	
-
 	def sign_up_prompt
 		print 'Please enter first name: '
 		first_name = gets.chomp.capitalize
@@ -30,9 +28,15 @@ class Prompt
 		pin = gets.chomp
 		print 'Please enter the amount of your initial balance: '
 		balance = gets.chomp
-		new_account_holder = Account.new(first_name, last_name, pin, balance)
-		new_account_holder.new_account_number
-		puts "Here is your new account number: #{new_account_holder.new_account_number}"
+		new_account = Account.new(first_name, last_name, pin, balance)
+		puts "Here is your new account number: #{new_account.new_account_number}"
+		print "would you like to create another account? y/n: "
+		another_account_input = gets.chomp.downcase
+		if another_account_input == 'y'
+			sign_up_prompt
+		else
+			puts "Thank You goodbye"
+		end
 	end
 
 	def login

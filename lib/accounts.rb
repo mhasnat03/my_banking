@@ -1,3 +1,4 @@
+require_relative 'accounts_holder'
 class Account
 
 	attr_reader :first_name, :last_name
@@ -7,10 +8,18 @@ class Account
 	    @last_name = last_name
 	    @pin = pin
 	    @balance = balance
+	    @account_number = nil
 	end
 
 	def new_account_number
-	   rand.to_s[2..7]
+	   @account_number = rand.to_s[2..7]
+	   save_account_in_accounts_holder
+	   @account_number
 	end
 
+private
+
+	def save_account_in_accounts_holder
+		AccountsHolder.save_account(self)
+	end
 end
