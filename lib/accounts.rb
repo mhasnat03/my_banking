@@ -1,7 +1,7 @@
 require_relative 'accounts_holder'
 class Account
 
-	attr_reader :first_name, :last_name
+	attr_reader :first_name, :last_name, :pin, :balance, :account_number
 
 	def initialize(first_name, last_name, pin, balance)
 		@first_name = first_name
