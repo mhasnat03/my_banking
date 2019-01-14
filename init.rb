@@ -51,31 +51,14 @@ class Prompt
 	def login
 		print 'Please enter account #: '
 		account_number = gets.chomp
-		account_list = AccountsHolder.save_account(self)
-		validate_account_number(account_list, account_number)
-	end
-
-	def validate_account_number(account_list, account_number)
-		account_list.each do |x|
-			account = account_number
-			 if x.account_number == account
-				 current_account = x.account_number
-				 current_pin = x.pin
-				 validate_pin(current_account, current_pin)
-				 return
-			 else
-				 puts 'account number does not exist in the system. Goodbye'
-			 end
-		end
-	end
-
-	def validate_pin(current_account, current_pin)
-		print 'please enter your pin: '
+		print 'Please enter 4 digit pin: '
 		pin_answer = gets.chomp
-		if pin_answer == current_pin
-			puts 'we have a match '
+		client_account = AccountsHolder.validate_credentials(account_number, pin_answer)
+		if client_account
+			print 'Please type D for deposit, W for withdrawl, B for balance: '
+
 		else
-			puts 'pin does not match, Goodbye'
+			puts 'Invalid credentials. Goodbye'
 		end
 	end
 end
